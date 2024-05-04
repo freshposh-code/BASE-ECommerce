@@ -6,7 +6,8 @@ import LoadingReducer from './features/loadingSlice';
 export const store = configureStore({
     reducer: {
         cartReducer,
-        productReducer
+        productReducer,
+        LoadingReducer
     },
     devTools: process.env.NODE_ENV !== 'production',
 });
