@@ -12,5 +12,5 @@ export const LoadingSlice = createSlice({
     }
 })
 
-export const { setLoading } = LoadingSlice.actions;
+export const { setLoading } = LoadingSlice.actions
 export default LoadingSlice.reducer;

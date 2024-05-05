@@ -1,10 +1,10 @@
 'use client'
 
+import Loader from '@/components/Admin-panel/Loader'
 import Login from '@/components/Admin-panel/Login'
 import Sidebar from '@/components/Admin-panel/Sidebar'
 import { useAppSelector } from '@/components/Redux/hooks'
 import { useSession } from 'next-auth/react'
-import Loader from './Loader'
 
 const layout = ({ children }: { children: React.ReactNode }) => {
     const isLoading = useAppSelector(store => store.LoadingReducer)
