@@ -17,35 +17,32 @@ const menus = [
     {
         title: "Product",
         icon: <AiOutlineShoppingCart />,
-        href: "/admin/dashboard",
+        href: "product",
     },
     {
         title: "Accounts",
         icon: <MdAccountTree />,
-        href: "/admin/dashboard",
+        href: "/account",
     },
     {
         title: "Transaction",
         icon: <GrTransaction />,
-        href: "/admin/dashboard",
+        href: "/transaction",
     },
     {
         title: "Analytics",
         icon: <IoAnalytics />,
-        href: "/admin/dashboard",
+        href: "/analytics",
     },
     {
         title: "setting",
         icon: <MdDashboard />,
-        href: "/admin/dashboard",
+        href: "/setting",
     },
 ]
 const Sidebar = () => {
     const [activeBar, setActiveBar] = useState(0)
 
-    const handleActivebar = (index: number) => {
-        setActiveBar(index)
-    }
     const pathName = usePathname();
 
     return <div className='bg-white w-[300px] min-h-screen p-4 shrink-0'>
@@ -56,9 +53,9 @@ const Sidebar = () => {
 
         <ul className="space-y-4 mt-6">
             {menus.map((menu, index) =>
-                <Link key={menu.title} href={menu.href} onClick={() => handleActivebar(index)}
+                <Link key={menu.title} href={menu.href}
                     className={`flex gap-2 items-center p-4 rounded-lg cursor-pointer hover:bg-pink hover:text-white ${activeBar === index ? "bg-pink text-white" : ""}
-                 ${pathName !== menu.href ? "bg-pink text-white" : "bg-gray-200"}`}>
+                 ${pathName === menu.href ? "bg-pink text-white" : "bg-gray-200"}`}>
 
                     <div className="text-[20px]">{menu.icon}</div>
                     <p>{menu.title}</p>

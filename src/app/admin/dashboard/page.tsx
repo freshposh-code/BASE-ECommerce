@@ -1,9 +1,10 @@
 'use client'
 
+import { useEffect, useState } from "react"
+import ProductRow from "@/components/Admin-panel/ProductRow"
 import { setLoading } from "@/components/Redux/features/loadingSlice"
 import { useAppDispatch } from "@/components/Redux/hooks"
 import axios from "axios"
-import { useEffect, useState } from "react"
 
 export interface Iproduct {
     _id: string,
@@ -15,7 +16,7 @@ export interface Iproduct {
 }
 
 const dashboard = () => {
-    const [product, setproduct] = useState([])
+    const [products, setproducts] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
     const [updatetable, setupdatetable] = useState(false)
 
@@ -24,29 +25,49 @@ const dashboard = () => {
     useEffect(() => {
         dispatch(setLoading(true))
 
-        axios.get("/api/get/get_product").
-            then((res) => setproduct(res.data)).
+        axios
+            .get("/api/get_products").
+            then((res) => setproducts(res.data)).
             catch((err) => console.log(err)).
             finally(() => dispatch(setLoading(false)))
-    }, [updatetable])
+
+    }, []);
 
     return (
-        <div className="bg-white h-[calc(100vh-96px)] rounded-lg p-4">
-            <h2 className="text-3xl">All Products</h2>
+        <div>
+            <div className="bg-white h-[calc(100vh-96px)] rounded-lg p-4">
+                <h2 className="text-3xl">All Products</h2>
 
-            <div className="mt-4 h-[calc(100vh-180px)] overflow-y-auto">
-                <table className="w-full">
-                    <thead>
-                        <tr className="text-gray-500 border-t border-[#ececec]">
-                            <th>SR NO.</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Pictures</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                </table>
+                <div className="mt-4 h-[calc(100vh-180px)] overflow-y-auto">
+                    <table className="w-full">
+                        <thead>
+                            <tr className="text-gray-500 border-t border-[#ececec]">
+                                <th>SR NO.</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Pictures</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                products.map((product: Iproduct, index) => (
+                                    <ProductRow
+                                        key={product._id}
+                                        srNo={index + 1}
+                                        setOpenPopup={setOpenPopup}
+                                        setUpdatetable={setupdatetable}
+                                        product={product}
+                                    />
+                                ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            {/* {openPopup && (
+                <Popup setOpenPopup={setOpenPopup} setupdatetable={setupdatetable} />
+            )} */}
         </div>
     )
 }
