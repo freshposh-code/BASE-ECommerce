@@ -13,7 +13,7 @@ export const cartSlice = createSlice({
     name: "cartSlice",
     initialState,
     reducers: {
-        addTocart: (state, action: PayloadAction<Iproduct>) => {
+        addToCart: (state, action: PayloadAction<Iproduct>) => {
             if (state.findIndex((pro) => pro.id === action.payload.id) === -1) {
                 state.push(action.payload)
             } else {
@@ -26,12 +26,12 @@ export const cartSlice = createSlice({
             }
         },
 
-        removeFromcart: (state, action: PayloadAction<string>) => {
+        removeFromCart: (state, action: PayloadAction<string>) => {
             const id = action.payload
             return state.filter((item) => item.id !== id)
         }
     }
 })
 
-export const { addTocart, removeFromcart } = cartSlice.actions
+export const { addToCart, removeFromCart } = cartSlice.actions
 export default cartSlice.reducer;

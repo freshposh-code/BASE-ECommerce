@@ -7,7 +7,7 @@ const initialState: Iproduct = {
     fileKey: "",
     name: "",
     price: "",
-    categotry: "",
+    category: "",
 }
 
 export const productSlice = createSlice({
