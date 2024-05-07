@@ -5,6 +5,7 @@ import ProductRow from "@/components/Admin-panel/ProductRow"
 import { setLoading } from "@/components/Redux/features/loadingSlice"
 import { useAppDispatch } from "@/components/Redux/hooks"
 import axios from "axios"
+import Popup from "@/components/Admin-panel/Popup"
 
 export interface Iproduct {
     _id: string,
@@ -12,13 +13,13 @@ export interface Iproduct {
     fileKey: string,
     name: string,
     price: string,
-    categotry: string,
+    category: string,
 }
 
 const dashboard = () => {
     const [products, setproducts] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
-    const [updatetable, setupdatetable] = useState(false)
+    const [updateTable, setUpdateTable] = useState(false)
 
     const dispatch = useAppDispatch()
 
@@ -31,7 +32,7 @@ const dashboard = () => {
             catch((err) => console.log(err)).
             finally(() => dispatch(setLoading(false)))
 
-    }, []);
+    }, [updateTable]);
 
     return (
         <div>
@@ -56,7 +57,7 @@ const dashboard = () => {
                                         key={product._id}
                                         srNo={index + 1}
                                         setOpenPopup={setOpenPopup}
-                                        setUpdatetable={setupdatetable}
+                                        setUpdatetable={setUpdateTable}
                                         product={product}
                                     />
                                 ))}
@@ -65,9 +66,9 @@ const dashboard = () => {
                 </div>
             </div>
 
-            {/* {openPopup && (
-                <Popup setOpenPopup={setOpenPopup} setupdatetable={setupdatetable} />
-            )} */}
+            {openPopup && (
+                <Popup setOpenPopup={setOpenPopup} setUpdateTable={setUpdateTable} />
+            )}
         </div>
     )
 }

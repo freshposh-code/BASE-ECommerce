@@ -3,43 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
-import { GrTransaction } from 'react-icons/gr'
-import { IoAnalytics } from 'react-icons/io5'
-import { MdAccountTree, MdDashboard } from 'react-icons/md'
+import { menus } from '../../../Utils/Data'
 
-const menus = [
-    {
-        title: "Dashboard",
-        icon: <MdDashboard />,
-        href: "/admin/dashboard",
-    },
-    {
-        title: "Product",
-        icon: <AiOutlineShoppingCart />,
-        href: "product",
-    },
-    {
-        title: "Accounts",
-        icon: <MdAccountTree />,
-        href: "/account",
-    },
-    {
-        title: "Transaction",
-        icon: <GrTransaction />,
-        href: "/transaction",
-    },
-    {
-        title: "Analytics",
-        icon: <IoAnalytics />,
-        href: "/analytics",
-    },
-    {
-        title: "setting",
-        icon: <MdDashboard />,
-        href: "/setting",
-    },
-]
 const Sidebar = () => {
     const [activeBar, setActiveBar] = useState(0)
 
