@@ -12,22 +12,22 @@ export const menus = [
     {
         title: "Product",
         icon: <AiOutlineShoppingCart />,
-        href: "products",
+        href: "/admin/products",
     },
     {
         title: "Accounts",
         icon: <MdAccountTree />,
-        href: "/account",
+        href: "/admin/account",
     },
     {
         title: "Transaction",
         icon: <GrTransaction />,
-        href: "/transaction",
+        href: "/admin/transaction",
     },
     {
         title: "Analytics",
         icon: <IoAnalytics />,
-        href: "/analytics",
+        href: "/admin/analytics",
     },
     {
         title: "setting",
