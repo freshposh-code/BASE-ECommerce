@@ -5,6 +5,9 @@ import { setProduct } from '../Redux/features/productSlice';
 import Image from 'next/image';
 import { CiEdit } from 'react-icons/ci';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import { setLoading } from '../Redux/features/loadingSlice';
+import axios from 'axios';
+import { makeToast } from '../../../Utils/helper';
 
 interface propstype {
     srNo: number;
@@ -23,7 +26,25 @@ const ProductRow = ({ srNo, setOpenPopup, setUpdatetable, product }: propstype) 
     }
 
     const onDelete = () => {
-        //    
+        dispatch(setLoading(true))
+
+        const payload = {
+            fileKey: product.fileKey,
+        }
+
+        axios.delete("/api/uploadthing", { data: payload })
+            .then((res) => {
+                console.log(res.data);
+
+                axios.delete(`/api/delete_product/${product._id}`)
+                    .then((res) => {
+                        console.log(res.data)
+                        makeToast(`${product.name} deleted Successfully`)
+                        setUpdatetable((prev) => !prev)
+                    })
+                    .catch((err) => console.log(err))
+                    .finally(() => dispatch(setLoading(false)))
+            }).catch(err => console.log(err))
     }
     return (
         <tr>
@@ -35,7 +56,7 @@ const ProductRow = ({ srNo, setOpenPopup, setUpdatetable, product }: propstype) 
                     {product.name}</div>
             </td>
             <td>
-                <div>{product.price}</div>
+                <div>${product.price}</div>
             </td>
             <td className='py-2'>
                 <Image src={product.imgSrc} width={40} height={40} alt='product-image' />
@@ -48,7 +69,7 @@ const ProductRow = ({ srNo, setOpenPopup, setUpdatetable, product }: propstype) 
 
                     <RiDeleteBin5Line
                         className='cursor-pointer hover:text-red-600'
-                        onClick={onEdit} />
+                        onClick={onDelete} />
                 </div>
             </td>
         </tr>
