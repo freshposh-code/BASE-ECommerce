@@ -8,7 +8,8 @@ export async function DELETE(request: NextRequest, URLParams: any) {
 
         await connectMongoDB()
 
-        await Product.findByIdAndUpdate(id)
+        // Use findByIdAndDelete to delete the document
+        await Product.findByIdAndDelete(id)
 
         return NextResponse.json({ msg: "Updated Successfuly" });
     } catch (error) {
