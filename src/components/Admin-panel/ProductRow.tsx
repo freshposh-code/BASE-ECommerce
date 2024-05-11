@@ -24,7 +24,6 @@ const ProductRow = ({ srNo, setOpenPopup, setUpdatetable, product }: propstype) 
         dispatch(setProduct(product))
         setOpenPopup(true)
     }
-
     const onDelete = () => {
         dispatch(setLoading(true))
 
@@ -32,10 +31,11 @@ const ProductRow = ({ srNo, setOpenPopup, setUpdatetable, product }: propstype) 
             fileKey: product.fileKey,
         }
 
+        // Delete both file and product document
         axios.delete("/api/uploadthing", { data: payload })
             .then((res) => {
                 console.log(res.data);
-
+                // After file deletion is successful, delete the product document
                 axios.delete(`/api/delete_product/${product._id}`)
                     .then((res) => {
                         console.log(res.data)
@@ -46,6 +46,7 @@ const ProductRow = ({ srNo, setOpenPopup, setUpdatetable, product }: propstype) 
                     .finally(() => dispatch(setLoading(false)))
             }).catch(err => console.log(err))
     }
+
     return (
         <tr>
             <td>
