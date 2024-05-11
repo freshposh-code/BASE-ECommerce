@@ -18,7 +18,7 @@ const CartProduct: React.FC<propsType> = ({
     return (
         <div className="flex justify-between items-center">
             <div className="flex items-center gap-4">
-                <img className="h-[80px]" src={img} alt={title} />
+                <img className="h-[80px] w-[100px] object-cover" src={img} alt={title} />
 
                 <div className="space-y-2">
                     <h3 className="font-medium">{title}</h3>
