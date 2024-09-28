@@ -1,18 +1,18 @@
 'use client'
 
 import Loader from '@/components/Admin-panel/Loader'
-// import Login from '@/components/Admin-panel/Login'
+import Login from '@/components/Admin-panel/Login'
 import Sidebar from '@/components/Admin-panel/Sidebar'
 import { useAppSelector } from '@/components/Redux/hooks'
-// import { useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const layout = ({ children }: { children: React.ReactNode }) => {
     const isLoading = useAppSelector(store => store.LoadingReducer)
-    // const { data: session } = useSession()
+    const { data: session } = useSession()
 
-    // if (!session?.user) {
-    //     return <Login />
-    // }
+    if (!session?.user) {
+        return <Login />
+    }
 
     return (
         <div className='flex'>
@@ -29,4 +29,4 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default Layout
+export default layout
