@@ -57,10 +57,10 @@ const ProductRow = ({ srNo, setOpenPopup, setUpdatetable, product }: propstype) 
                     {product.name}</div>
             </td>
             <td>
-                <div>${product.price}</div>
+                <div>{product.price}</div>
             </td>
             <td className='py-2'>
-                <Image src={product.imgSrc} width={40} height={40} alt='product-image' />
+                <Image className='w-12 h-10' src={product.imgSrc} width={1000} height={1000} alt='product-image' />
             </td>
             <td>
                 <div className="text-2xl flex items-center gap-2 text-gray-600">
