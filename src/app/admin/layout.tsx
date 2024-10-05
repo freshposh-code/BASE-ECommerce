@@ -8,11 +8,11 @@ import { useSession } from 'next-auth/react'
 
 const layout = ({ children }: { children: React.ReactNode }) => {
     const isLoading = useAppSelector(store => store.LoadingReducer)
-    const { data: session } = useSession()
+    // const { data: session } = useSession()
 
-    if (!session?.user) {
-        return <Login />
-    }
+    // if (!session) {
+    //     return <Login />
+    // }
 
     return (
         <div className='flex'>
