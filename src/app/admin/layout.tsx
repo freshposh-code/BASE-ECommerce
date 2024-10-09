@@ -6,7 +6,7 @@ import Sidebar from '@/components/Admin-panel/Sidebar'
 import { useAppSelector } from '@/components/Redux/hooks'
 import { useSession } from 'next-auth/react'
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
     const isLoading = useAppSelector(store => store.LoadingReducer)
     // const { data: session } = useSession()
 
@@ -29,4 +29,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default layout
+export default Layout
