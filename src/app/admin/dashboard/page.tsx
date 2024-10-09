@@ -16,7 +16,7 @@ export interface Iproduct {
     category: string,
 }
 
-const dashboard = () => {
+const Dashboard = () => {
     const [products, setproducts] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
     const [updateTable, setUpdateTable] = useState(false)
@@ -73,4 +73,4 @@ const dashboard = () => {
     )
 }
 
-export default dashboard
+export default Dashboard
