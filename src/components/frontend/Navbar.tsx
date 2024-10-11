@@ -15,7 +15,7 @@ const Navbar = ({ setShowCart }: PropsCart) => {
         <div className='pt-4 bg-white top-0 sticky'>
             <div className="px-4 md:px-28">
                 <div className="flex justify-between items-center">
-                    <div className="text-4xl font-bold">LOGO</div>
+                    <div className="text-4xl font-bold"><span className='text-blue-700'>P</span>SHOP</div>
                     <div className="xl:flex hidden w-full max-w-[500px]">
                         <input className='border-2 border-accent px-6 py-2 w-full'
                             type="text" placeholder='search for products...' />
